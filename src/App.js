@@ -20,8 +20,8 @@ function App() {
 
             <Route exact path="/" component={Landing}></Route>
             <Route exact path="/login" render={props => <Login setUser={setUser} {...props}></Login>}></Route>
-            <Route path="*" component={NotFound} />
             <PrivateRoute exact path="/jobs/:id" component={JobDetails} user={user}></PrivateRoute>
+            <Route path="*" component={NotFound} />
           </Switch>
         </div>
 

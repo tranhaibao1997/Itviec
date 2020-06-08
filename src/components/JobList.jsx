@@ -17,32 +17,32 @@ function JobList(props) {
   let [originalJobs, setoriginalJobs] = React.useState(null);
   let [searchText, setSearchText] = React.useState(null);
   React.useEffect(() => {
-      getData()
+    getData();
     handleSearch();
   }, [originalJobs]);
- 
+
   let history = useHistory();
   let query = useQuery();
   const QUERYSTR_PREFIX = "q";
-
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
 
-  function getSearchString(e)
-  {
-      setSearchText(e.target.value)
+  function getSearchString(e) {
+    setSearchText(e.target.value);
   }
 
   const handleSearch = (e) => {
     let filteredJobs = originalJobs;
     if (e) {
       e.preventDefault();
-      history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(searchText)}`);
+      history.push(
+        `/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(searchText)}`
+      );
     }
     if (searchText) {
-      filteredJobs = originalJobs.filter(job =>
+      filteredJobs = originalJobs.filter((job) =>
         job.title.toLowerCase().includes(searchText.toLowerCase())
       );
     }
@@ -54,11 +54,9 @@ function JobList(props) {
     let data = await fetch(url);
     let result = await data.json();
     setJobs(result);
-    setoriginalJobs(result)
+    setoriginalJobs(result);
   };
 
-
- 
   return (
     <>
       <div className="search-header">
@@ -72,12 +70,10 @@ function JobList(props) {
                     type="text"
                     placeholder="Search"
                     className="mr-sm-2"
-                    onChange={e=>getSearchString(e)}
+                    onChange={(e) => getSearchString(e)}
                   />
                 </Form>
               </Col>
-
-              
             </Row>
           </div>
         </Container>
