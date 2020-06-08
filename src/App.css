@@ -1,6 +1,16 @@
 .navbar-expand {
     justify-content: space-betweens !important;
 }
+.navbar-nav a
+
+{
+    color:white !important
+}
+a
+{
+    color: black !important  ;
+    text-decoration: none;
+}
 
 .search-header {
     min-height: 444px;
