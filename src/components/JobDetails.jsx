@@ -6,6 +6,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Link } from "react-router-dom";
 
 import moment from "moment";
+import Loading from "./Loading";
 
 export default function Details() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export default function Details() {
   }, []);
 
   if (!job) {
-    return <div>Loading</div>;
+    return <Loading></Loading>;
   }
   return (
     <div className="App">

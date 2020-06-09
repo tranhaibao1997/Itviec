@@ -1,13 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function Login(props) {
+    const dispatch = useDispatch();
     let history = useHistory();
-    console.log(props)
+    let [email,setEmail]=useState()
+    let [password,setPassword]=useState()
     function Login(e) {
-        e.preventDefault()
-        props.setUser({ isAuthenticated: true })
-        history.push(`/`)
+        e.preventDefault();
+        let user = { email: email, password: password };
+        dispatch({ type: "LOGIN", payload: user });
+        history.goBack();
     }
     return (
         <div className="grid">
@@ -16,9 +20,9 @@ function Login(props) {
                 <form action="#">
                     <fieldset>
                         <p><label htmlFor="email">E-mail address</label></p>
-                        <p><input type="email" id="email" placeholder="mail@address.com" /></p>
+                        <p><input onChange={e=>setEmail(e.target.value)} type="email"  id="email" placeholder="mail@address.com" /></p>
                         <p><label htmlFor="password">Password</label></p>
-                        <p><input type="password" id="password" placeholder="password" /></p>
+                        <p><input onChange={e=>setPassword(e.target.value)} type="password" id="password" placeholder="password" /></p>
                         <p><input onClick={(e) => Login(e)} type="submit" defaultValue="Sign In" /></p>
                     </fieldset>
                 </form>

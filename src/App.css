@@ -1,5 +1,5 @@
 .navbar-expand {
-    justify-content: space-betweens !important;
+    justify-content: space-between !important;
 }
 .navbar-nav a
 
@@ -277,4 +277,15 @@ input {
 
 #login fieldset input[type="submit"]:hover {
     background: #28ad63;
+}
+.middle 
+{
+    height: 100vh;
+}
+.loading
+{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
